@@ -1,16 +1,12 @@
 package net.presentationpanda.examples.content.stockQuote
 {
-	import com.greensock.TweenMax;
-	import com.greensock.easing.Linear;
 	import com.greensock.loading.XMLLoader;
-	import com.greensock.loading.data.XMLLoaderVars;
 	
 	import flash.events.Event;
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
 	
 	import net.presentationpanda.sdk.controller.tools.ITools;
-	import net.presentationpanda.sdk.model.MediaType;
 	import net.presentationpanda.sdk.model.plugins.content.BaseContentElement;
 	import net.presentationpanda.sdk.model.plugins.content.IDisplayObjectController;
 	import net.presentationpanda.sdk.model.plugins.content.IEditorContentPlugin;
@@ -25,7 +21,7 @@ package net.presentationpanda.examples.content.stockQuote
 		
 		public function ContentElement(ID:String, plugin:IEditorContentPlugin, tools:ITools, displayObjectController:IDisplayObjectController=null)
 		{
-			super(this, ID, MediaType.SWF, plugin, tools, displayObjectController);
+			super(this, ID, plugin, tools, displayObjectController);
 			init();
 		}
 		
