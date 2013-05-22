@@ -1,11 +1,10 @@
 package net.presentationpanda.examples.content.stockQuote
 {
-	import com.greensock.loading.XMLLoader;
-	
 	import flash.events.Event;
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
 	
+	import net.presentationpanda.sdk.controller.loaders.IXMLLoader;
 	import net.presentationpanda.sdk.controller.tools.ITools;
 	import net.presentationpanda.sdk.model.plugins.content.BaseContentElement;
 	import net.presentationpanda.sdk.model.plugins.content.IDisplayObjectController;
@@ -15,7 +14,7 @@ package net.presentationpanda.examples.content.stockQuote
 	{
 		private var _params:ParamsHolder;
 		private var _gui:LibStockQuote; // from the assets.swc
-		private var _dataLoader:XMLLoader;
+		private var _dataLoader:IXMLLoader;
 		private var _nTimeout:Number;
 		private var _bPlaying:Boolean=false;
 		
@@ -31,7 +30,7 @@ package net.presentationpanda.examples.content.stockQuote
 		 */
 		private function init():void {
 			_params=new ParamsHolder();
-
+			
 			// this is the movieclip symbol for display
 			_gui=new LibStockQuote();
 			displayObjectController.setDisplayObject(_gui, _gui.contentMask.width, _gui.contentMask.height);
@@ -53,7 +52,7 @@ package net.presentationpanda.examples.content.stockQuote
 			
 			// note how the _dataLoader will call onLoadComplete/onLoadProgress/onLoadError!
 			// see also the documentation for com.greensock.loading.XMLLoader
-			_dataLoader=new XMLLoader("http://www.webservicex.net/stockquote.asmx/GetQuote?symbol="+_params.sSymbol,{onComplete:onLoadComplete, onProgress: onLoadProgress, onFail:onLoadError, format:"text"});
+			_dataLoader=tools.create.xmlLoader("http://www.webservicex.net/stockquote.asmx/GetQuote?symbol="+_params.sSymbol,{onComplete:onLoadComplete, onProgress: onLoadProgress, onFail:onLoadError, format:"text"});
 			_dataLoader.load();
 		}
 		
@@ -89,7 +88,7 @@ package net.presentationpanda.examples.content.stockQuote
 			// VERY VERY important to call the super function!
 			super.onLoadComplete();
 		}
-
+		
 		
 		/*******************************************************************************
 		 *	Plugin Functions
@@ -103,7 +102,7 @@ package net.presentationpanda.examples.content.stockQuote
 			_params.sSymbol=value.toUpperCase();
 			triggerLoad();
 		}
-
+		
 		/**
 		 * Internal helper function to truncate a Number.
 		 */
@@ -136,7 +135,7 @@ package net.presentationpanda.examples.content.stockQuote
 			// now set the symbol
 			setSymbol(_params.sSymbol);
 		}
-
+		
 		
 		/**
 		 * Called before the slide plays.
@@ -163,7 +162,7 @@ package net.presentationpanda.examples.content.stockQuote
 		override public function getSearchText():String {
 			return "Stock Quote: "+_params.sSymbol;
 		}
-
+		
 		
 		/**
 		 * This one is VERY important. This function is called when the item is deleted from the
