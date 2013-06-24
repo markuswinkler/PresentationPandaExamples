@@ -48,7 +48,7 @@ package net.presentationpanda.examples.content.stockQuote
 			_gui.stockSymbol.text=_params.sSymbol;
 			
 			// unload an existing dataloader
-			if(_dataLoader) _dataLoader.dispose(true);
+			if(_dataLoader) _dataLoader.destroy();
 			
 			// note how the _dataLoader will call onLoadComplete/onLoadProgress/onLoadError!
 			// see also the documentation for com.greensock.loading.XMLLoader
@@ -56,7 +56,7 @@ package net.presentationpanda.examples.content.stockQuote
 			_dataLoader.load();
 		}
 		
-		override public function onLoadComplete(e:Event=null):void {
+		private function onLoadComplete(e:Event=null):void {
 			if(!_dataLoader.content) {
 				// try loading again in 10 seconds if the presentation is playing
 				if(_bPlaying) _nTimeout=setTimeout(triggerLoad,10000);
@@ -86,7 +86,7 @@ package net.presentationpanda.examples.content.stockQuote
 			if(_bPlaying) _nTimeout=setTimeout(triggerLoad,10000);
 			
 			// VERY VERY important to call the super function!
-			super.onLoadComplete();
+			processLoadComplete();
 		}
 		
 		
@@ -171,7 +171,7 @@ package net.presentationpanda.examples.content.stockQuote
 		 * @param e
 		 */
 		override public function destroy(e:Event=null):void {
-			if(_dataLoader) _dataLoader.dispose(true);
+			if(_dataLoader) _dataLoader.destroy();
 			super.destroy(e);
 		}
 	}
