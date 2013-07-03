@@ -17,14 +17,11 @@ package net.presentationpanda.examples.content.stockQuote
 		public function ToolbarView(tools:ITools)
 		{
 			super(tools);
+			init();
 		}
 		
 		
-		/**
-		 * This function is called only once when the toolbar is added to the stage.
-		 * Place all your init code here.
-		 */
-		override public function onFirstAddedToStage():void {
+		private function init():void {
 			// create params instance to get defaults
 			var params:ParamsHolder=new ParamsHolder();
 			
