@@ -34,7 +34,7 @@ package net.presentationpanda.examples.content.stockQuote
 			 *	registerClassAlias("flash.geom.Point", Point);
 			 *  registerClassAlias("flash.geom.Matrix", Matrix);
 			 ******************************************************************************/
-			registerClassAlias("net.presentationpanda.plugins.content.stockQuote.ParamsHolder", ParamsHolder);
+			registerClassAlias("net.presentationpanda.plugins.content.stockQuote.ParamsHolder", Params);
 			
 			/*******************************************************************************
 			 * Add some documentation to your custom classes so other developers can use

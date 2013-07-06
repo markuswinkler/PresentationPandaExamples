@@ -12,7 +12,7 @@ package net.presentationpanda.examples.content.stockQuote
 	
 	final public class ContentElement extends BaseContentElement
 	{
-		private var _params:ParamsHolder;
+		private var _params:Params;
 		private var _gui:LibStockQuote; // from the assets.swc
 		private var _dataLoader:IXMLLoader;
 		private var _nTimeout:Number;
@@ -29,7 +29,7 @@ package net.presentationpanda.examples.content.stockQuote
 		 * Your code will execute faster (the AS3 compiler can't optimize constructor code).
 		 */
 		private function init():void {
-			_params=new ParamsHolder();
+			_params=new Params();
 			
 			// this is the movieclip symbol for display
 			_gui=new LibStockQuote();
@@ -52,8 +52,7 @@ package net.presentationpanda.examples.content.stockQuote
 			
 			// note how the _dataLoader will call onLoadComplete/onLoadProgress/onLoadError!
 			// see also the documentation for com.greensock.loading.XMLLoader
-			_dataLoader=tools.create.xmlLoader("http://www.webservicex.net/stockquote.asmx/GetQuote?symbol="+_params.sSymbol,{onComplete:onLoadComplete, onProgress: onLoadProgress, onFail:onLoadError, format:"text"});
-			_dataLoader.load();
+			_dataLoader=loadManager.add_XML("http://www.webservicex.net/stockquote.asmx/GetQuote?symbol="+_params.sSymbol,{onComplete:onLoadComplete, onProgress: onLoadProgress, onFail:onLoadError, format:"text"});
 		}
 		
 		private function onLoadComplete(e:Event=null):void {
@@ -83,10 +82,9 @@ package net.presentationpanda.examples.content.stockQuote
 				_gui.high.text=""+digits(xmldata.High);
 				_gui.low.text=""+digits(xmldata.Low);
 			}
-			if(_bPlaying) _nTimeout=setTimeout(triggerLoad,10000);
 			
-			// VERY VERY important to call the super function!
-			processLoadComplete();
+			// load a new value every 10 seconds
+			if(_bPlaying) _nTimeout=setTimeout(triggerLoad,10000);
 		}
 		
 		
@@ -116,7 +114,7 @@ package net.presentationpanda.examples.content.stockQuote
 		 ******************************************************************************/
 		
 		/**
-		 * @return The plugin Parameters
+		 * The plugin Parameters
 		 */
 		override public function get params():* {
 			return _params;
@@ -124,13 +122,12 @@ package net.presentationpanda.examples.content.stockQuote
 		
 		/**
 		 * Loads/sets all plugin parameters at once.
-		 * @param value an instance of the params class for this plugin
 		 */
 		override public function set params(value:*):void {
-			if( value is ParamsHolder)
+			if( value is Params)
 				_params=value;
 			else
-				_params=new ParamsHolder();
+				_params=new Params();
 			
 			// now set the symbol
 			setSymbol(_params.sSymbol);
@@ -142,6 +139,7 @@ package net.presentationpanda.examples.content.stockQuote
 		 */
 		override public function onSlideStart(e:Event=null):void {
 			_bPlaying=true;
+			// update the stock ticker
 			triggerLoad();
 		}
 		
@@ -171,8 +169,16 @@ package net.presentationpanda.examples.content.stockQuote
 		 * @param e
 		 */
 		override public function destroy(e:Event=null):void {
-			if(_dataLoader) _dataLoader.destroy();
+			// we don't have to destroy it, the loadManager will take care of that.
+			// Just set variables and such to null to ease the work for the garbage collector.
+			_dataLoader=null; 
+			
+			// just to be on the safe side
+			clearTimeout(_nTimeout);
+			
 			super.destroy(e);
 		}
 	}
 }
+
+

@@ -9,7 +9,7 @@ package net.presentationpanda.examples.content.stockQuote
 	 *	registerClassAlias("flash.geom.Point", Point);
 	 *  registerClassAlias("flash.geom.Matrix", Matrix);
 	 */
-	public class ParamsHolder
+	public class Params
 	{
 		public var sSymbol:String="AAPL"; // Added "AAPL" as default ticker symbol.
 	}
