@@ -16,7 +16,6 @@ package net.presentationpanda.examples.content.stockQuote
 		private var _gui:LibStockQuote; // from the assets.swc
 		private var _dataLoader:IXMLLoader;
 		private var _nTimeout:Number;
-		private var _bPlaying:Boolean=false;
 		
 		public function ContentElement(ID:String, plugin:IEditorContentPlugin, tools:ITools, displayObjectController:IDisplayObjectController=null)
 		{
@@ -58,7 +57,7 @@ package net.presentationpanda.examples.content.stockQuote
 		private function onLoadComplete(e:Event=null):void {
 			if(!_dataLoader.content) {
 				// try loading again in 10 seconds if the presentation is playing
-				if(_bPlaying) _nTimeout=setTimeout(triggerLoad,10000);
+				if(isSlidePlaying) _nTimeout=setTimeout(triggerLoad,10000);
 				return;
 			}
 			var xml_source:XML=_dataLoader.content;
@@ -84,7 +83,7 @@ package net.presentationpanda.examples.content.stockQuote
 			}
 			
 			// load a new value every 10 seconds
-			if(_bPlaying) _nTimeout=setTimeout(triggerLoad,10000);
+			if(isSlidePlaying) _nTimeout=setTimeout(triggerLoad,10000);
 		}
 		
 		
@@ -137,8 +136,7 @@ package net.presentationpanda.examples.content.stockQuote
 		/**
 		 * Called before the slide plays.
 		 */
-		override public function onSlideStart(e:Event=null):void {
-			_bPlaying=true;
+		override protected function onSlideStart():void {
 			// update the stock ticker
 			triggerLoad();
 		}
@@ -146,8 +144,7 @@ package net.presentationpanda.examples.content.stockQuote
 		/**
 		 * Called after the slide stops.
 		 */
-		override public function onSlideStop(e:Event=null):void {
-			_bPlaying=false;
+		override protected function onSlideStop():void {
 			clearTimeout(_nTimeout);
 		}
 		
@@ -180,5 +177,3 @@ package net.presentationpanda.examples.content.stockQuote
 		}
 	}
 }
-
-
