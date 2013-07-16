@@ -1,5 +1,7 @@
 package net.presentationpanda.examples.content.stockQuote
 {
+	import com.demonsters.debugger.MonsterDebugger;
+	
 	import flash.events.Event;
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
@@ -29,6 +31,10 @@ package net.presentationpanda.examples.content.stockQuote
 		 */
 		private function init():void {
 			_params=new Params();
+
+			// Point the MonsterDebugger to this plugin.
+			// Use this line in your plugin ONLY during debugging and remove it before you upload it to the server
+			MonsterDebugger.inspect(this);
 			
 			// this is the movieclip symbol for display
 			_gui=new LibStockQuote();
