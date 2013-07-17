@@ -28,8 +28,8 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="2" path="bin-debug/PresentationPandaSDK.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="assets/assets.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="bin-debug/PresentationPanda.swc" useDefaultLinkType="false"/>
     </libraryPath>
     <sourceAttachmentPath/>
   </compiler>
@@ -41,5 +41,3 @@
   <buildCSSFiles/>
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
 </actionScriptProperties>
-
-
