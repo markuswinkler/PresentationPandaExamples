@@ -1,14 +1,16 @@
 package net.presentationpanda.examples.content.stockQuote
 {
+	import com.demonsters.debugger.MonsterDebugger;
+	
 	import flash.events.Event;
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
 	
-	import net.presentationpanda.sdk.controller.loaders.IXMLLoader;
-	import net.presentationpanda.sdk.controller.tools.ITools;
-	import net.presentationpanda.sdk.model.plugins.content.BaseContentElement;
-	import net.presentationpanda.sdk.model.plugins.content.IDisplayObjectController;
-	import net.presentationpanda.sdk.model.plugins.content.IEditorContentPlugin;
+	import net.presentationpanda.lib.controller.loaders.IXMLLoader;
+	import net.presentationpanda.lib.controller.tools.ITools;
+	import net.presentationpanda.lib.model.plugins.content.BaseContentElement;
+	import net.presentationpanda.lib.model.plugins.content.IDisplayObjectController;
+	import net.presentationpanda.lib.model.plugins.content.IEditorContentPlugin;
 	
 	final public class ContentElement extends BaseContentElement
 	{
@@ -29,6 +31,10 @@ package net.presentationpanda.examples.content.stockQuote
 		 */
 		private function init():void {
 			_params=new Params();
+
+			// Point the MonsterDebugger to this plugin.
+			// Use this line in your plugin ONLY during debugging and remove it before you upload it to the server
+			MonsterDebugger.inspect(this);
 			
 			// this is the movieclip symbol for display
 			_gui=new LibStockQuote();

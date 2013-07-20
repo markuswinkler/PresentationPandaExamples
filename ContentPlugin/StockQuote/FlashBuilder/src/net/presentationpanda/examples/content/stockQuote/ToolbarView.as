@@ -2,10 +2,10 @@ package net.presentationpanda.examples.content.stockQuote
 {
 	import flash.events.Event;
 	
-	import net.presentationpanda.sdk.controller.tools.ITools;
-	import net.presentationpanda.sdk.events.StringEvent;
-	import net.presentationpanda.sdk.view.plugins.content.BaseContentPluginToolbarView;
-	import net.presentationpanda.sdk.view.ui.IUIInputField;
+	import net.presentationpanda.lib.controller.tools.ITools;
+	import net.presentationpanda.lib.events.StringEvent;
+	import net.presentationpanda.lib.view.plugins.content.BaseContentPluginToolbarView;
+	import net.presentationpanda.lib.view.ui.IUIInputField;
 	
 	/**
 	 * This toolbar holds all input fields for this plugin.

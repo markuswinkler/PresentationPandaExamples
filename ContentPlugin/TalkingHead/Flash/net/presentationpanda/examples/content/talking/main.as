@@ -1,7 +1,7 @@
 package net.presentationpanda.examples.content.talking
 {
-	import net.presentationpanda.sdk.model.plugins.ActivationType;
-	import net.presentationpanda.sdk.model.plugins.content.BaseContentPlugin;
+	import net.presentationpanda.lib.model.plugins.ActivationType;
+	import net.presentationpanda.lib.model.plugins.content.BaseContentPlugin;
 	
 	public class main extends BaseContentPlugin
 	{

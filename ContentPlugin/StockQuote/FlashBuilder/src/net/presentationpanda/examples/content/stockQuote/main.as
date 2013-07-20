@@ -2,7 +2,7 @@ package net.presentationpanda.examples.content.stockQuote
 {
 	import flash.net.registerClassAlias;
 	
-	import net.presentationpanda.sdk.model.plugins.content.BaseContentPlugin;
+	import net.presentationpanda.lib.model.plugins.content.BaseContentPlugin;
 	
 	public class main extends BaseContentPlugin
 	{

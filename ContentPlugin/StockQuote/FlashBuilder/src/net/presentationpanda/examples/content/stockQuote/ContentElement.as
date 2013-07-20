@@ -6,11 +6,11 @@ package net.presentationpanda.examples.content.stockQuote
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
 	
-	import net.presentationpanda.sdk.controller.loaders.IXMLLoader;
-	import net.presentationpanda.sdk.controller.tools.ITools;
-	import net.presentationpanda.sdk.model.plugins.content.BaseContentElement;
-	import net.presentationpanda.sdk.model.plugins.content.IDisplayObjectController;
-	import net.presentationpanda.sdk.model.plugins.content.IEditorContentPlugin;
+	import net.presentationpanda.lib.controller.loaders.IXMLLoader;
+	import net.presentationpanda.lib.controller.tools.ITools;
+	import net.presentationpanda.lib.model.plugins.content.BaseContentElement;
+	import net.presentationpanda.lib.model.plugins.content.IDisplayObjectController;
+	import net.presentationpanda.lib.model.plugins.content.IEditorContentPlugin;
 	
 	final public class ContentElement extends BaseContentElement
 	{

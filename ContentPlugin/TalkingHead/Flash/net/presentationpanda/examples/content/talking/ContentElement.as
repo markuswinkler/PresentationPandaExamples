@@ -6,10 +6,10 @@ package net.presentationpanda.examples.content.talking
 	import flash.media.Microphone;
 	import flash.media.SoundTransform;
 	
-	import net.presentationpanda.sdk.controller.tools.ITools;
-	import net.presentationpanda.sdk.model.plugins.content.BaseContentElement;
-	import net.presentationpanda.sdk.model.plugins.content.IDisplayObjectController;
-	import net.presentationpanda.sdk.model.plugins.content.IEditorContentPlugin;
+	import net.presentationpanda.lib.controller.tools.ITools;
+	import net.presentationpanda.lib.model.plugins.content.BaseContentElement;
+	import net.presentationpanda.lib.model.plugins.content.IDisplayObjectController;
+	import net.presentationpanda.lib.model.plugins.content.IEditorContentPlugin;
 	
 	final public class ContentElement extends BaseContentElement
 	{
