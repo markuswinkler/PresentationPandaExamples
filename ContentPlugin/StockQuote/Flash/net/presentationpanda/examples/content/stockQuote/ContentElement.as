@@ -7,7 +7,6 @@ package net.presentationpanda.examples.content.stockQuote
 	import flash.utils.setTimeout;
 	
 	import net.presentationpanda.lib.controller.loaders.IXMLLoader;
-	import net.presentationpanda.lib.controller.tools.ITools;
 	import net.presentationpanda.lib.model.plugins.content.BaseContentElement;
 	import net.presentationpanda.lib.model.plugins.content.IDisplayObjectController;
 	import net.presentationpanda.lib.model.plugins.content.IEditorContentPlugin;
@@ -19,9 +18,9 @@ package net.presentationpanda.examples.content.stockQuote
 		private var _dataLoader:IXMLLoader;
 		private var _nTimeout:Number;
 		
-		public function ContentElement(ID:String, plugin:IEditorContentPlugin, tools:ITools, displayObjectController:IDisplayObjectController=null)
+		public function ContentElement(ID:String, plugin:IEditorContentPlugin, displayObjectController:IDisplayObjectController=null)
 		{
-			super(this, ID, plugin, tools, displayObjectController);
+			super(this, ID, plugin, displayObjectController);
 			init();
 		}
 		
@@ -160,9 +159,9 @@ package net.presentationpanda.examples.content.stockQuote
 		 * e.g. the text of a textfield or the kind of shape in case it is a shape
 		 * @return the description
 		 */
-		override public function getSearchText():String {
-			return "Stock Quote: "+_params.sSymbol;
-		}
+//		override public function getSearchText():String {
+//			return "Stock Quote: "+_params.sSymbol;
+//		}
 		
 		
 		/**

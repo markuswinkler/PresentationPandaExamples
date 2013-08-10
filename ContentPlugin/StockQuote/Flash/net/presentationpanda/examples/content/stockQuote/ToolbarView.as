@@ -2,7 +2,6 @@ package net.presentationpanda.examples.content.stockQuote
 {
 	import flash.events.Event;
 	
-	import net.presentationpanda.lib.controller.tools.ITools;
 	import net.presentationpanda.lib.events.StringEvent;
 	import net.presentationpanda.lib.view.plugins.content.BaseContentPluginToolbarView;
 	import net.presentationpanda.lib.view.ui.IUIInputField;
@@ -15,9 +14,9 @@ package net.presentationpanda.examples.content.stockQuote
 		// helper variable to access the symbol input field in updateToolbar
 		private var _symbol:IUIInputField; 
 		
-		public function ToolbarView(contentElementClass:Class, tools:ITools)
+		public function ToolbarView(contentElementClass:Class)
 		{
-			super(contentElementClass, tools);
+			super(contentElementClass);
 		}
 		
 		override protected function onInit():void {
