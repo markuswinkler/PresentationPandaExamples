@@ -159,9 +159,9 @@ package net.presentationpanda.examples.content.stockQuote
 		 * e.g. the text of a textfield or the kind of shape in case it is a shape
 		 * @return the description
 		 */
-//		override public function getSearchText():String {
-//			return "Stock Quote: "+_params.sSymbol;
-//		}
+		override public function getSearchText():String {
+			return "Stock Quote: "+_params.sSymbol;
+		}
 		
 		
 		/**

@@ -1,6 +1,7 @@
 package net.presentationpanda.examples.content.stockQuote
 {
 	import flash.net.registerClassAlias;
+	import flash.system.Security;
 	
 	import net.presentationpanda.lib.model.plugins.content.BaseContentPlugin;
 	
@@ -8,6 +9,10 @@ package net.presentationpanda.examples.content.stockQuote
 	{
 		public function main()
 		{
+			try {
+				Security.allowDomain('*');
+			} catch(e:Error) {};
+
 			super(ContentElement, new LibPluginIcon(), new LibPluginCursor());
 			
 			/*******************************************************************************
@@ -39,7 +44,7 @@ package net.presentationpanda.examples.content.stockQuote
 			/*******************************************************************************
 			 * Add some documentation to your custom classes so other developers can use
 			 * it more easily.
-			 * asDoc(funcName, Description, Parameters [ [Name, Description (optional), Default Value (optional)], ... ] 
+			 * addDoc(funcName, Description, Parameters [ [Name, Description (optional), Default Value (optional)], ... ] 
 			 ******************************************************************************/
 			addDoc("setSymbol","Sets the symbol for the stock ticker, e.g. AAPL",[["symbol","The symbol to be set, e.g. AAPL"]]);
 		}
