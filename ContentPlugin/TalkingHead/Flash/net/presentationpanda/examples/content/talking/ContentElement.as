@@ -6,7 +6,6 @@ package net.presentationpanda.examples.content.talking
 	import flash.media.Microphone;
 	import flash.media.SoundTransform;
 	
-	import net.presentationpanda.lib.controller.tools.ITools;
 	import net.presentationpanda.lib.model.plugins.content.BaseContentElement;
 	import net.presentationpanda.lib.model.plugins.content.IDisplayObjectController;
 	import net.presentationpanda.lib.model.plugins.content.IEditorContentPlugin;
@@ -16,9 +15,9 @@ package net.presentationpanda.examples.content.talking
 		private var _mic:Microphone;
 		private var _head:LibHead;
 
-		public function ContentElement(ID:String, plugin:IEditorContentPlugin, tools:ITools, displayObjectController:IDisplayObjectController=null)
+		public function ContentElement(ID:String, plugin:IEditorContentPlugin, displayObjectController:IDisplayObjectController=null)
 		{
-			super(this, ID, plugin, tools, displayObjectController);
+			super(this, ID, plugin, displayObjectController);
 			init();
 		}
 		

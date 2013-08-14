@@ -5,12 +5,13 @@ package net.presentationpanda.examples.content.talking
 	
 	public class main extends BaseContentPlugin
 	{
-		public function main() {
-			super(ContentElement, new LibPluginIcon(), new LibPluginCursor());
+		// You need at least one reference to the ContentElement/ToolbarView/ToolbarEditModeView/OptionDialogueView/Params class
+		// to embed it into your plugin. Otherwise it gets "optimized" away by the compiler
+		private var embedHelperContentElement:ContentElement;
 
-			/*******************************************************************************
-			 *	INIT Block - Set all the default values for the plugin here
-			 ******************************************************************************/
+		public function main() {
+			super(new LibPluginIcon(), new LibPluginCursor());
+
 			_bDefaultHasPlay=true;
 			_iDefaultPreferredActivation=ActivationType.AFTER_PREVIOUS;
 

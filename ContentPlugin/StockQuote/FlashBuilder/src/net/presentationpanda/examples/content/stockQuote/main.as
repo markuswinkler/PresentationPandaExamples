@@ -1,23 +1,18 @@
 package net.presentationpanda.examples.content.stockQuote
 {
-	import flash.net.registerClassAlias;
-	import flash.system.Security;
-	
 	import net.presentationpanda.lib.model.plugins.content.BaseContentPlugin;
 	
 	public class main extends BaseContentPlugin
 	{
+		// You need at least one reference to the ContentElement/ToolbarView/ToolbarEditModeView/OptionDialogueView/Params class
+		// to embed it into your plugin. Otherwise it gets "optimized" away by the compiler
+		private var embedHelperToolbar:ToolbarView;
+		private var embedHelperContentElement:ContentElement;
+
 		public function main()
 		{
-			try {
-				Security.allowDomain('*');
-			} catch(e:Error) {};
-
-			super(ContentElement, new LibPluginIcon(), new LibPluginCursor());
+			super(new LibPluginIcon(), new LibPluginCursor());
 			
-			/*******************************************************************************
-			 *	INIT Block - Set all the default values for the plugin here
-			 ******************************************************************************/
 			// Default width of the plugin
 			_iDefaultWidth=252;
 			
@@ -27,10 +22,6 @@ package net.presentationpanda.examples.content.stockQuote
 			// Lock the aspect ratio for new ContentElements?
 			_bDefaultLockAspectRatio=true;
 
-			// Sets the optional toolbar class. The toolbar class must be extended from BaseToolbarView
-			// and must have the same base class path as this main class for security reasons.
-			_toolbarClass=ToolbarView;
-			
 			/*******************************************************************************
 			 * Register classes to enable save/load of params
 			 * If you use any data types besides int/Number/String make sure
@@ -39,7 +30,7 @@ package net.presentationpanda.examples.content.stockQuote
 			 *	registerClassAlias("flash.geom.Point", Point);
 			 *  registerClassAlias("flash.geom.Matrix", Matrix);
 			 ******************************************************************************/
-			registerClassAlias("net.presentationpanda.plugins.content.stockQuote.ParamsHolder", Params);
+//			registerClassAlias("net.presentationpanda.plugins.content.stockQuote.ParamsHolder", Params);
 			
 			/*******************************************************************************
 			 * Add some documentation to your custom classes so other developers can use
