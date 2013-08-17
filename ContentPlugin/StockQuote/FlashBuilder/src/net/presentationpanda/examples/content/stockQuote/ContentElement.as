@@ -1,7 +1,5 @@
 package net.presentationpanda.examples.content.stockQuote
 {
-	import com.demonsters.debugger.MonsterDebugger;
-	
 	import flash.events.Event;
 	import flash.utils.clearTimeout;
 	import flash.utils.setTimeout;
@@ -13,7 +11,6 @@ package net.presentationpanda.examples.content.stockQuote
 	
 	final public class ContentElement extends BaseContentElement
 	{
-		private var _params:Params;
 		private var _gui:LibStockQuote; // from the assets.swc
 		private var _dataLoader:IXMLLoader;
 		private var _nTimeout:Number;
@@ -29,12 +26,6 @@ package net.presentationpanda.examples.content.stockQuote
 		 * Your code will execute faster (the AS3 compiler can't optimize constructor code).
 		 */
 		private function init():void {
-			_params=new Params();
-
-			// Point the MonsterDebugger to this plugin.
-			// Use this line in your plugin ONLY during debugging and remove it before you upload it to the server
-			MonsterDebugger.inspect(this);
-			
 			// this is the movieclip symbol for display
 			_gui=new LibStockQuote();
 			displayObjectController.setDisplayObject(_gui, _gui.contentMask.width, _gui.contentMask.height);
@@ -92,6 +83,15 @@ package net.presentationpanda.examples.content.stockQuote
 		}
 		
 		
+		/**
+		 * This function is called after the params are set and before the slide is displayed 
+		 * @param e Just a helper variable to be able to target it from an addEventListener call
+		 */
+		override public function update(e:Event=null):void {
+			setSymbol(_params.sSymbol);
+		}
+		
+		
 		/*******************************************************************************
 		 *	Plugin Functions
 		 ******************************************************************************/
@@ -116,27 +116,6 @@ package net.presentationpanda.examples.content.stockQuote
 		/*******************************************************************************
 		 *	SDK functions
 		 ******************************************************************************/
-		
-		/**
-		 * The plugin Parameters
-		 */
-		override public function get params():* {
-			return _params;
-		}
-		
-		/**
-		 * Loads/sets all plugin parameters at once.
-		 */
-		override public function set params(value:*):void {
-			if( value is Params)
-				_params=value;
-			else
-				_params=new Params();
-			
-			// now set the symbol
-			setSymbol(_params.sSymbol);
-		}
-		
 		
 		/**
 		 * Called before the slide plays.
@@ -168,7 +147,7 @@ package net.presentationpanda.examples.content.stockQuote
 		 * This one is VERY important. This function is called when the item is deleted from the
 		 * presentation. Use it to stop data transfers and free up memory.
 		 * Please make sure to ALWAYS call the super.destroy(e) function!!
-		 * @param e
+		 * @param e Just a helper variable to be able to target it from an addEventListener call
 		 */
 		override public function destroy(e:Event=null):void {
 			// we don't have to destroy it, the loadManager will take care of that.

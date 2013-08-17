@@ -50,10 +50,13 @@ package net.presentationpanda.examples.content.stockQuote
 		 * This function is called when the value of the input field changes.
 		 */
 		private function onChangeSymbol(e:StringEvent):void {
+			// Always put these two lines there. This is an important check to ensure that
+			// the parameters will be set on the right element.
 			var aItem:Array=getSelectedElements();
 			if(aItem.length==0) return;
 			
-			setParam("setSymbol", e.string,"Change Symbol",e.string);
+			var element:IUIInputField=IUIInputField(e.target);
+			setParam("setSymbol", element.value, "Change Symbol", element.value);
 		}
 	}
 }
